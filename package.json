@@ -5,16 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Not implement yet\" && exit 1",
-    "start": "tsc && node dst/index.js"
+    "start": "tsc && node dst/index.js",
+    "start_mongo": "tsc && node dst/db/index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^18.11.13",
     "typescript": "^4.9.4"
   },
   "dependencies": {
     "chalk": "4.1.2",
+    "mongoose": "^6.8.0",
     "node-opcua": "^2.85.0"
   }
 }
