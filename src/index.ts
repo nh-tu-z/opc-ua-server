@@ -5,7 +5,7 @@ import {
     OPCUAServerEndPoint
   } from 'node-opcua';
   
-  import { green, yellow, red } from './utils/log';
+  import { green, yellow, red, greenBright } from './utils/log';
   import { serverOptions } from './config/server-config';
   //import { createAddressSpace } from './addressspace';
   
@@ -34,8 +34,8 @@ import {
       yellow(` Server shutdown already requested... shutdown will happen in ${server.engine.serverStatus.secondsTillShutdown} second`);
       return;
     }
-    yellow(' Received server interruption from user ');
-    yellow(' shutting down ...');
+    yellow('Received server interruption from user ');
+    yellow('shutting down ...');
     const reason = coerceLocalizedText('Shutdown by administrator');
     reason ? server.engine.serverStatus.shutdownReason = reason : null;
     server.shutdown(10000, () => {
@@ -57,7 +57,7 @@ import {
   
   (async () => {
     try {
-      yellow(' starting server... ');
+      greenBright(' starting server... ');
       await server.initialize();
       //await createAddressSpace(server);
       server.engine.addressSpace?.installAlarmsAndConditionsService();

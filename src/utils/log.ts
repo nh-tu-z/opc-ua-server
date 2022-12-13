@@ -18,25 +18,31 @@ class Logger implements LoggerInterface {
 
     constructor () {
 
-    }
+    };
 
     green(msg:string): void {
         logToFile(msg)
         console.log(' LOG: ', chalk.green(msg))
-    }
+    };
 
     yellow (msg:string): void {
         logToFile(msg)
         console.log(' LOG: ', chalk.yellow(msg))
-    }
+    };
 
     red (msg:string): void {
         logToFile(msg)
         console.log(' LOG: ', chalk.red(msg))
-    }
+    };
+
+    greenBright (msg:string) : void {
+        logToFile(msg)
+        console.log(' LOG: ', chalk.greenBright(msg))
+    };
 }
 
-export const logger = new Logger()
-export const green = logger.green
-export const yellow = logger.yellow
-export const red = logger.red
+export const logger = new Logger();
+export const green = logger.green;
+export const yellow = logger.yellow;
+export const red = logger.red;
+export const greenBright = logger.greenBright;
