@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Not implement yet\" && exit 1",
-    "start": "tsc && node dst/index.js",
-    "dev-server": "nodemon --watch src/index.ts --exec ts-node src/index.ts",
-    "test-mongo": "tsc && node dst/db/index.js"
+    "start": "tsc && node dst/server.js",
+    "dev-server": "nodemon --watch src/** --exec ts-node src/server.ts",
+    "test-mongo": "tsc && node dst/db/connector.js"
   },
   "author": "",
   "license": "ISC",

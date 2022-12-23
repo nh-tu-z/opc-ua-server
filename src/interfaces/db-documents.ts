@@ -46,3 +46,16 @@ interface IRawData {
     TimeStamp : Date,
     CreatedAt : Date
 }
+
+interface IUAObject {
+    UAObjectId : ObjectId,
+    BrowseName : String,
+    DataType : String,
+}
+
+export interface IUAVariable {
+    browseName : String,
+    componentOf : Number,
+    description : String,
+    dataType : Number
+}
