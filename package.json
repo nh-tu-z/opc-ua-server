@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Not implement yet\" && exit 1",
     "start": "tsc && node dst/index.js",
-    "start_mongo": "tsc && node dst/db/index.js"
+    "dev-server": "nodemon --watch src/index.ts --exec ts-node src/index.ts",
+    "test-mongo": "tsc && node dst/db/index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/mongoose": "^5.11.97",
     "@types/node": "^18.11.13",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   },
   "dependencies": {
