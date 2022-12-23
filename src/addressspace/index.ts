@@ -5,10 +5,10 @@ import {
 import { green } from '../utils/log';
 import { createTagAddressSpace } from './create-tag-addressspace';
 
-export const createAddressSpace = async (server: OPCUAServer, db: any): Promise<void> => {
+export const createAddressSpace = async (server: OPCUAServer): Promise<void> => {
   const addressSpace = server.engine.addressSpace;
   addressSpace
-    ? await Promise.all([createTagAddressSpace(addressSpace, db)])
+    ? await Promise.all([createTagAddressSpace(addressSpace)])
       .then(() => {
         green(' creating addressspace done! ', `[AddressSpace]`);
       })

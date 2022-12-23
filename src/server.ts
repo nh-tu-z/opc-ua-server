@@ -61,7 +61,7 @@ const startUp = async (server: OPCUAServer): Promise<void> => {
     green(' starting server... ');
     await db.connect();
     await server.initialize();
-    await createAddressSpace(server, db);
+    await createAddressSpace(server);
     //server.engine.addressSpace?.installAlarmsAndConditionsService();
     await startUp(server);
   } catch (error) {

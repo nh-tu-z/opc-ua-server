@@ -6,3 +6,7 @@ export {
     ProductName,
     BuildNumber
 }
+
+export const schemaName = {
+    uaVariable: 'UAVariable'
+}

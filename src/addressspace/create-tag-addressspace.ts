@@ -1,18 +1,34 @@
 import { 
     AddressSpace,
-    UAObjectType
-} from 'node-opcua'
+    UAObjectType,
+    Variant,
+    DataType,
+    randomGuid
+} from 'node-opcua';
+import { UAVariable } from '../db/schema/opc-schema';
 
-export const createTagAddressSpace = async (addressSpace: AddressSpace, db: any): Promise<void> => {
-    const namespace = addressSpace?.getOwnNamespace()
-    const diIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/DI/')
+export const createTagAddressSpace = async (addressSpace: AddressSpace): Promise<void> => {
+    const namespace = addressSpace?.getOwnNamespace();
+    const diIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/DI/');
 
-    //const softwareType = addressSpace?.findNode(`ns=${diIdx};i=15106`) as UAObjectType
-
-    console.log('ROOT FOLDER', addressSpace.rootFolder.objects)
     const dev = namespace.addObject({
         browseName: 'DEV',
         organizedBy: addressSpace.rootFolder.objects,
         eventSourceOf: addressSpace.rootFolder.objects.server
-    })
+    });
+
+    const uavariables = await UAVariable.find({});
+    console.log('tuhngo', uavariables);
+    uavariables.forEach((uav) => {
+        namespace.addVariable({
+            componentOf: dev,
+            browseName: uav.browseName as string,
+            dataType: "Double",
+            value: {
+                get: function () {
+                    return new Variant({dataType: DataType.Double, value: randomGuid() });
+                }
+            }
+        })
+    });
 }
