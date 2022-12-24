@@ -8,5 +8,7 @@ export {
 }
 
 export const schemaName = {
-    uaVariable: 'UAVariable'
+    uaVariable: 'UAVariable',
+    tag: 'Tag',
+    rawData: 'RawData'
 }

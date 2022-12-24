@@ -26,25 +26,25 @@ interface IDeviceStatus {
     UpdatedAt : Date
 }
 
-interface ITag {
-    DeviceId : ObjectId,
-    TagName : String,
-    DataType : String,
-    Scale : String,
-    Description : String,
-    CreatedAt : Date,
-    UpdatedAt : Date,
-    RW : Number
+export interface ITag {
+    deviceId : ObjectId,
+    tagName : String,
+    dataType : String,
+    scale : String,
+    description : String,
+    createdAt : Date,
+    updatedAt : Date,
+    rW : Number
 }
 
-interface IRawData {
-    DeviceId : ObjectId,
-    TagId : ObjectId,
-    TagName : String,
-    Value : String,
-    UnixTimeStamp : Number,
-    TimeStamp : Date,
-    CreatedAt : Date
+export interface IRawData {
+    deviceId : ObjectId,
+    tagId : ObjectId,
+    tagName : String,
+    value : String,
+    unixTimeStamp : Number,
+    timeStamp : Date,
+    createdAt : Date
 }
 
 interface IUAObject {

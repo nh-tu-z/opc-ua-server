@@ -2,10 +2,9 @@ import {
     AddressSpace,
     UAObjectType,
     Variant,
-    DataType,
-    randomGuid
+    DataType
 } from 'node-opcua';
-import { UAVariable } from '../db/schema/opc-schema';
+import { UAVariableModel } from '../db/schema/opc-schema';
 
 export const createTagAddressSpace = async (addressSpace: AddressSpace): Promise<void> => {
     const namespace = addressSpace?.getOwnNamespace();
@@ -17,7 +16,7 @@ export const createTagAddressSpace = async (addressSpace: AddressSpace): Promise
         eventSourceOf: addressSpace.rootFolder.objects.server
     });
 
-    const uavariables = await UAVariable.find({});
+    const uavariables = await UAVariableModel.find({});
     console.log('tuhngo', uavariables);
     uavariables.forEach((uav) => {
         namespace.addVariable({
@@ -25,8 +24,15 @@ export const createTagAddressSpace = async (addressSpace: AddressSpace): Promise
             browseName: uav.browseName as string,
             dataType: "Double",
             value: {
-                get: function () {
-                    return new Variant({dataType: DataType.Double, value: randomGuid() });
+                timestamped_get: async function () {
+                    let dataoutput;
+                    UAVariableModel.find({}, null, function (err, uavariables) {
+                        dataoutput = uavariables
+                        console.log('inside data', uavariables)
+                        return new Variant({dataType: DataType.Double, value: 1 });
+                    })
+                    console.log(dataoutput)
+                    return new Variant({dataType: DataType.Double, value: 1 })
                 }
             }
         })
