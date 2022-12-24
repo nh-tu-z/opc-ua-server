@@ -1,5 +1,5 @@
 import { Schema, model, Types } from 'mongoose';
-import { IUAVariable, ITag, IRawData } from '../../interfaces/db-documents';
+import { IUAVariable, ITag, IRawData, IGroup, IDevice } from '../../interfaces/db-documents';
 import { schemaName } from '../../constants/const';
 
 // UA Variable
@@ -38,3 +38,28 @@ const rawDataSchema = new Schema<IRawData>({
 })
 
 export const RawDataModel = model<IRawData>(schemaName.rawData, rawDataSchema);
+
+// Group
+const groupSchema = new Schema<IGroup>({
+  groupId: { type: Types.ObjectId, required: true},
+  groupName: { type: String, required: true },
+  description: { type: String },
+  state: { type: Number, required: true },
+  createdAt: { type: Date, required: true },
+  updatedAt: { type: Date, required: true }
+});
+
+export const GroupModel = model<IGroup>(schemaName.group, groupSchema);
+
+// Device
+const deviceSchema = new Schema<IDevice>({
+  deviceId: { type: Types.ObjectId, required: true},
+  groupId: { type: Types.ObjectId, required: true},
+  deviceName: { type: String, required: true },
+  description: { type: String },
+  state: { type: Number, required: true },
+  createdAt: { type: Date, required: true },
+  updatedAt: { type: Date, required: true }
+});
+
+export const DeviceModel = model<IDevice>(schemaName.device, deviceSchema);

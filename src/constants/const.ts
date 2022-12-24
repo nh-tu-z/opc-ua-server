@@ -10,5 +10,7 @@ export {
 export const schemaName = {
     uaVariable: 'UAVariable',
     tag: 'Tag',
-    rawData: 'RawData'
+    rawData: 'RawData',
+    group: 'Group',
+    device: 'Device'
 }

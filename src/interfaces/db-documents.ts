@@ -1,22 +1,22 @@
 import { ObjectId, Date } from 'mongoose';
 
-interface IGroup {
-    GroupId : ObjectId,
-    GroupName : String,
-    Description : String,
-    State : Number,
-    CreatedAt: Date,
-    UpdatedAt : Date
+export interface IGroup {
+    groupId : ObjectId,
+    groupName : String,
+    description : String,
+    state : Number,
+    createdAt: Date,
+    updatedAt : Date
 }
 
-interface IDevice {
-    DeviceId : ObjectId,
-    GroupId : ObjectId,
-    DeviceName : String,
-    Description : String,
-    State : Number,
-    CreatedAt: Date,
-    UpdatedAt : Date
+export interface IDevice {
+    deviceId : ObjectId,
+    groupId : ObjectId,
+    deviceName : String,
+    description : String,
+    state : Number,
+    createdAt: Date,
+    updatedAt : Date
 }
 
 interface IDeviceStatus {
