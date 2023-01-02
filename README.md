@@ -19,7 +19,9 @@ TODO - add requirements
 
 #### 2. MongoDB
 - Provide the `mongo uri` fof the project. For example:
+    ```shell
     $ mongodb://localhost:27017
+    ```
 
 ### Run the OPC UA Server
 - `npm run dev-server` to run with auto-restart.
