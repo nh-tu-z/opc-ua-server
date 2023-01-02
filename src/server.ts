@@ -10,6 +10,13 @@ import { serverOptions } from './config/server-config';
 import { createAddressSpace } from './addressspace/index';
 import * as db from './db/connector';
 
+// env
+(async function() {
+  await import("dotenv/config")
+
+  console.log(process.env)
+})()
+
 const server = new OPCUAServer(serverOptions)
   .on('serverRegistered', () => {
     green(' serverRegistered! ');
