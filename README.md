@@ -20,7 +20,7 @@ TODO - add requirements
 #### 2. MongoDB
 - Provide the `mongo uri` fof the project. For example:
     ```shell
-    $ mongodb://localhost:27017
+    mongodb://localhost:27017
     ```
 
 ### Run the OPC UA Server
