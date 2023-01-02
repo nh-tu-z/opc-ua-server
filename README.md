@@ -14,7 +14,15 @@ TODO - add requirements
 
 #### 1. EMQX
 - Install EMQX at https://www.emqx.io/downloads
-- Prompt to EMQX Dashboard at `http://localhost:18083/` by default.
+- Prompt to EMQX Dashboard by default at:
+    ```shell
+    http://localhost:18083/
+    ```
+Log in with default account:
+    ```shell
+    $ username = admin
+    $ public = public
+    ```
 - TODO
 
 #### 2. MongoDB
