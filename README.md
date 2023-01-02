@@ -18,7 +18,7 @@ TODO - add requirements
     ```shell
     http://localhost:18083/
     ```
-Log in with default account:
+  Log in with default account:
     ```shell
     $ username = admin
     $ public = public
