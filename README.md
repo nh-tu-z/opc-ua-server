@@ -32,9 +32,7 @@ TODO - add requirements
     ```
 
 #### 3. Environment Configuration
-     ```shell
-    $ MQTT_PROTOCOL # MQTT protocol such as mqtt, mqtts, ws, wss
-    ```
+$ MQTT_PROTOCOL # MQTT protocol such as mqtt, mqtts, ws, wss
 
 ### Run the OPC UA Server
 - `npm run dev-server` to run with auto-restart.
