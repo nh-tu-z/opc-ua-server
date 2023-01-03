@@ -11,13 +11,6 @@ import { createAddressSpace } from './addressspace/index';
 import * as db from './db/connector';
 import * as mqtt from './mqtt/connector';
 
-// env
-(async function() {
-  await import("dotenv/config")
-
-  console.log(process.env)
-})()
-
 mqtt.connect();
 
 const server = new OPCUAServer(serverOptions)

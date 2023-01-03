@@ -1,24 +1,15 @@
 import * as mqtt from 'mqtt';
 import { mqttOptions, mqttProtocols } from '../config/mqtt-config';
 import { green, red } from '../utils/log';
+import { envConfig } from '../config/env-config';
 
-// TODO - paste there to test
-// env
-(async function() {
-    await import("dotenv/config")
-  
-    console.log(process.env)
-})()
-
-const host = '127.0.0.1';
+const host = '0.0.0.0';
 const port = '8883';
 
 export function connect(): void {
-    console.log('tuhngo - mqtt connect')
     // default is mqtt, unencrypted tcp connection
     let connectUrl = `mqtt://${host}:${port}`;
-    let mqttProtocol = process.env.MQTT_PROTOCOL as string;
-    console.log('tuhngo - mqtt connect string', `${mqttProtocol}`)
+    let mqttProtocol = envConfig.MQTT_PROTOCOL;
 
     if (mqttProtocol && mqttProtocols.indexOf(mqttProtocol) === -1) {
         red(`protocol must one of mqtt, mqtts, ws, wss.`, `[mqtt]`);
@@ -29,7 +20,6 @@ export function connect(): void {
         //mqttOptions['ca'] = fs.readFileSync('./broker.emqx.io-ca.crt')
     }
     else if (mqttProtocol === 'ws') {
-        console.log('tuhngo - ws protocol')
         // ws, unencrypted WebSocket connection
         const mountPath = '/mqtt'; // mount path, connect emqx via WebSocket
         connectUrl = `ws://${host}:8083${mountPath}`;
@@ -47,15 +37,15 @@ export function connect(): void {
     const client = mqtt.connect(connectUrl, mqttOptions);
 
     client.on('connect', () => {
-        console.log(`${mqttProtocol}: Connected`);
-        client.subscribe([topic], () => {
-          console.log(`${mqttProtocol}: Subscribe to topic '${topic}'`)
-        });
-        client.publish(topic, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
-          if (error) {
-            console.error(error);
-          }
-        });
+      green(`connect successfully`, `[mqtt]`);
+      client.subscribe([topic], () => {
+        console.log(`${mqttProtocol}: Subscribe to topic '${topic}'`)
+      });
+      client.publish(topic, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
+        if (error) {
+          console.error(error);
+        }
+      });
     });
 
       client.on('reconnect', (error: string) => {
