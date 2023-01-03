@@ -9,6 +9,7 @@ import { green, yellow, red } from './utils/log';
 import { serverOptions } from './config/server-config';
 import { createAddressSpace } from './addressspace/index';
 import * as db from './db/connector';
+import * as mqtt from './mqtt/connector';
 
 // env
 (async function() {
@@ -16,6 +17,8 @@ import * as db from './db/connector';
 
   console.log(process.env)
 })()
+
+mqtt.connect();
 
 const server = new OPCUAServer(serverOptions)
   .on('serverRegistered', () => {
