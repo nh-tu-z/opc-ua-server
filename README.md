@@ -21,7 +21,7 @@ TODO - add requirements
   Log in with default account:
     ```shell
     $ username = admin
-    $ public = public
+    $ password = public
     ```
 - TODO
 
