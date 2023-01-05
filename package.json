@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Not implement yet\" && exit 1",
+    "build": "tsc",
     "start": "tsc && node dst/server.js",
     "dev-server": "nodemon --watch src/** --exec ts-node src/server.ts",
     "test-mongo": "tsc && node dst/db/connector.js",
-    "test-mqtt": "tsc && node dst/mqtt/connector.js"
+    "test-mqtt": "tsc && node dst/mqtt/connector.js",
+    "dir-manager": "node dst/tools/dir-manager/index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/figlet": "^1.5.5",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^18.11.13",
     "@types/ws": "^8.5.4",
@@ -22,7 +25,9 @@
   },
   "dependencies": {
     "chalk": "4.1.2",
+    "commander": "^9.4.1",
     "dotenv": "^16.0.3",
+    "figlet": "^1.5.2",
     "mongoose": "^6.8.0",
     "mqtt": "^4.3.7",
     "node-opcua": "^2.85.0"
