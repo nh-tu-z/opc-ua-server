@@ -1,20 +1,15 @@
 import { MqttClient } from 'mqtt';
 import { green, red } from '../utils/log';
 
-const topic = 'default-mqtt-topic';
+const connectionGatewayTopic = 'connection-gateway/01';
 
 export const setupEventHandlers = (client: MqttClient): MqttClient => {
     const mqttProtocol = client.options.protocol;
     client.on('connect', () => {
       green(`connect successfully`, `[mqtt]`);
 
-      client.subscribe([topic], () => {
-        console.log(`${mqttProtocol}: Subscribe to topic '${topic}'`)
-      });
-      client.publish(topic, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
-        if (error) {
-          console.error(error);
-        }
+      client.subscribe([connectionGatewayTopic], () => {
+        console.log(`${mqttProtocol}: Subscribe to topic '${connectionGatewayTopic}'`)
       });
     });
 
@@ -28,6 +23,16 @@ export const setupEventHandlers = (client: MqttClient): MqttClient => {
       
     client.on('message', (topic, payload) => {
         console.log('Received Message:', topic, payload.toString())
+        if (topic === connectionGatewayTopic)
+        {
+          console.log(payload.toString());
+          let json = JSON.parse(payload.toString());
+          client.publish(`connection-setup/${json.clientId}`, 'connection set up successfully', { qos: 0, retain: false }, (error) => {
+            if (error) {
+                console.error(error);
+            }
+        });
+        }
     });
     return client;
 }
