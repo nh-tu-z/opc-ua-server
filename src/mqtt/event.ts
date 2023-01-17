@@ -1,14 +1,13 @@
 import { MqttClient } from 'mqtt';
 import { green, red } from '../utils/log';
 
-const topic = '/nodejs/mqtt';
+const topic = 'default-mqtt-topic';
 
 export const setupEventHandlers = (client: MqttClient): MqttClient => {
     const mqttProtocol = client.options.protocol;
     client.on('connect', () => {
       green(`connect successfully`, `[mqtt]`);
 
-      console.log(client);
       client.subscribe([topic], () => {
         console.log(`${mqttProtocol}: Subscribe to topic '${topic}'`)
       });

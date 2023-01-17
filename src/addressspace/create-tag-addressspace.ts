@@ -17,7 +17,7 @@ export const createTagAddressSpace = async (addressSpace: AddressSpace): Promise
     });
 
     const uavariables = await UAVariableModel.find({});
-    console.log('tuhngo', uavariables);
+    //console.log('tuhngo', uavariables);
     uavariables.forEach((uav) => {
         namespace.addVariable({
             componentOf: dev,
@@ -28,10 +28,10 @@ export const createTagAddressSpace = async (addressSpace: AddressSpace): Promise
                     let dataoutput;
                     UAVariableModel.find({}, null, function (err, uavariables) {
                         dataoutput = uavariables
-                        console.log('inside data', uavariables)
+                        //console.log('inside data', uavariables)
                         return new Variant({dataType: DataType.Double, value: 1 });
                     })
-                    console.log(dataoutput)
+                    //console.log(dataoutput)
                     return new Variant({dataType: DataType.Double, value: 1 })
                 }
             }
