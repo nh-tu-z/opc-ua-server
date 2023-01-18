@@ -1,6 +1,6 @@
 import { IClientOptions } from 'mqtt';
 
-const clientId = `mqtt_${Math.random().toString(16).slice(3)}`;
+const clientId = `server_${Math.random().toString(16).slice(3)}`;
 
 export const mqttOptions: IClientOptions = {
     clientId: clientId,

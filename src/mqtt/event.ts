@@ -21,7 +21,7 @@ export const setupEventHandlers = (client: MqttClient): MqttClient => {
         console.log(`Cannot connect(${mqttProtocol}):`, error)
     });
       
-    client.on('message', (topic, payload) => {
+    client.on('message', (topic, payload, packet) => {
         console.log('Received Message:', topic, payload.toString())
         if (topic === connectionGatewayTopic)
         {
