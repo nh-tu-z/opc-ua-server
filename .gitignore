@@ -1,7 +1,15 @@
+# detail of pattern in https://git-scm.com/docs/gitignore
+
+# ignore all node modules, dependencies
 node_modules
 
-dst/*
+# ignore generated files in specific folder
+**/dst/**
 
+# ignore all *.js files
+*.js
+
+# ignore specific file
 log.txt
 
 .env
