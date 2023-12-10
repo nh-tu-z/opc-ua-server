@@ -1,5 +1,9 @@
 # OPC UA Server
 
+<p align="center">
+    <a href="/LICENSE"><img alt="Software License" src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=for-the-badge"></a>
+</p>
+
 ## Requirements
 TODO - add requirements
 
